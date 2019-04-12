@@ -21,8 +21,14 @@ public class CommonEvents {
     }
 
     public static void setInputFieldHidden(WebElement webElement, String content) {
-        ((JavascriptExecutor) ManageDriver.getInstance().getWebDriver())
-                .executeScript("arguments[0].value="+content+";", webElement);
+        JavascriptExecutor jsExecutor =((JavascriptExecutor) ManageDriver.getInstance().getWebDriver());
+
+        jsExecutor.executeScript("arguments[0].style.display='block';", webElement);
+
+        webElement.clear();
+        webElement.sendKeys(content);
+
+        jsExecutor.executeScript("arguments[0].style.display='hidden';", webElement);
     }
 
     /**

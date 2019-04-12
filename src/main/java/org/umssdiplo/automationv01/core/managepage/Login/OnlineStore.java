@@ -92,8 +92,7 @@ public class OnlineStore extends BasePage {
     CommonEvents.setInputField(modelInputField, "VXS");
     CommonEvents.setInputField(turretInputField, "None");
 
-//    CommonEvents.setInputFieldHidden(machineryImageInputField, "C:\\Users\\Cronoz\\Desktop\\img.jpg");
-
+    CommonEvents.setInputFieldHidden(machineryImageInputField, "E:\\DH\\Diplomado\\Modulo IV\\automatization\\src\\test\\resources\\inputData\\images\\img.jpg");
   }
 
   public String getInsertedBrandName() {
