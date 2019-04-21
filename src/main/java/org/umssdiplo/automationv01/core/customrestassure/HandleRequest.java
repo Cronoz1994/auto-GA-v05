@@ -42,7 +42,7 @@ public class HandleRequest {
                 .spec(REQUEST)
                 .contentType(ContentType.JSON)
                 .when()
-                .body(body)
+                .body(body).log().all()
                 .post(endpoint);
     }
 
@@ -50,7 +50,7 @@ public class HandleRequest {
         return given()
                 .spec(REQUEST)
                 .contentType(ContentType.JSON)
-                .when()
+                .when().log().all()
                 .post(endpoint);
     }
 }

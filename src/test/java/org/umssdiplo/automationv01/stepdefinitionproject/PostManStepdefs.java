@@ -13,27 +13,27 @@ import static org.testng.Assert.assertEquals;
  * @autor Marcelo Garay
  */
 public class PostManStepdefs {
-    private Response response;
+  private Response response;
 
-    @Given("^GET \"([^\"]*)\" postman endpoint is configured$")
-    public void getPostmanEndpointIsConfigured(String headerEndpoint) throws Throwable {
-        response = HandleRequest.get(headerEndpoint);
-    }
+  @Given("^GET \"([^\"]*)\" postman endpoint is configured$")
+  public void getPostmanEndpointIsConfigured(String headerEndpoint) throws Throwable {
+    response = HandleRequest.get(headerEndpoint);
+  }
 
-    @Then("^the status code should be (\\d+)$")
-    public void theStatusCodeShouldBe(int statusCode) throws Throwable {
-        assertEquals(response.getStatusCode(), statusCode);
-    }
+  @Then("^the status code should be (\\d+)$")
+  public void theStatusCodeShouldBe(int statusCode) throws Throwable {
+    assertEquals(response.getStatusCode(), statusCode);
+  }
 
-    @Then("^the responde 'data' value is \"([^\"]*)\"$")
-    public void theRespondeDataValueIs(String esperado) throws Throwable {
-        String actual = response.getDataValue();
+  @Then("^the response 'data' value is \"([^\"]*)\"$")
+  public void theRespondeDataValueIs(String esperado) throws Throwable {
+    String actual = response.jsonPath().get("data");
 
-        Assert.assertEquals(esperado, actual);
-    }
+    Assert.assertEquals(esperado, actual);
+  }
 
-    @Given("^POST \"([^\"]*)\" postman endpoint is configured$")
-    public void postPostmanEndpointIsConfigured(String arg0) throws Throwable {
-
-    }
+  @Given("^POST \"([^\"]*)\" postman endpoint is configured with the \"([^\"]*)\"$")
+  public void postPostmanEndpointIsConfiguredWith(String postEndpoint, String body) throws Throwable {
+    response = HandleRequest.post(postEndpoint, body);
+  }
 }
